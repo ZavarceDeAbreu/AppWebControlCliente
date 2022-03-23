@@ -12,6 +12,12 @@ public class Conexion {
     private static BasicDataSource dataSource;
     
     public static DataSource getDataSource(){
+    	try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	if(null == dataSource) {
     		dataSource = new BasicDataSource();
     		dataSource.setUrl(JDBC_URL);
